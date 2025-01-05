@@ -22,7 +22,7 @@ if uploaded_file is not None:
 
     # Display the extracted text
     st.subheader("Extracted Text:")
-    st.text_area("", extracted_text, height=200)
+    st.text_area("Extracted Text:", extracted_text, height=200)
 
 # Add instructions
 st.info("Upload an image containing text, and the app will extract the text for you.")
