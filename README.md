@@ -158,7 +158,7 @@ TBD
 
 ## Author
 
-[Your Name](https://github.com/jasminaaa20)
+[Akmal Ali Jasmin](https://github.com/jasminaaa20)
 
 Feel free to contribute or raise issues in the repository. Enjoy extracting text from images!
 
