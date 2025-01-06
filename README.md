@@ -86,7 +86,7 @@ docker build -t streamlit-ocr .
 
 ### Run the Docker Container
 ```bash
-docker run -p 8501:8501 streamlit-ocr-app
+docker run -p 8501:8501 streamlit-ocr
 ```
 
 Access the app at `http://localhost:8501`.
@@ -110,13 +110,13 @@ Access the app at `http://localhost:8501`.
 
 1. **Build and Push the Image to Google Container Registry**
    ```bash
-   gcloud builds submit --tag gcr.io/<PROJECT-ID>/streamlit-ocr-app
+   gcloud builds submit --tag gcr.io/<PROJECT-ID>/streamlit-ocr
    ```
 
 2. **Deploy to Cloud Run**
    ```bash
-   gcloud run deploy streamlit-ocr-app \
-       --image gcr.io/<PROJECT-ID>/streamlit-ocr-app \
+   gcloud run deploy streamlit-ocr \
+       --image gcr.io/<PROJECT-ID>/streamlit-ocr \
        --platform managed \
        --region <REGION> \
        --allow-unauthenticated
