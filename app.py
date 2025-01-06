@@ -1,7 +1,9 @@
+import pytesseract
 import streamlit as st
 from PIL import Image
-import pytesseract
-import io
+import os
+
+port = int(os.environ.get("PORT", 8501))
 
 # Title of the app
 st.title("OCR Image to Text Extractor")
