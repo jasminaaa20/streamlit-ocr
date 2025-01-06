@@ -19,30 +19,40 @@ This is a web-based application that allows users to upload an image containing 
 ### Installing Tesseract OCR
 
 #### Windows
+
 1. Download the installer from the [UB Mannheim Tesseract page](https://github.com/UB-Mannheim/tesseract/wiki).
 2. Install the application and add the installation directory to your `PATH` environment variable.
 3. Verify installation:
+
    ```bash
    tesseract --version
    ```
 
 #### macOS
+
 1. Install via Homebrew:
+
    ```bash
    brew install tesseract
    ```
+
 2. Verify installation:
+
    ```bash
    tesseract --version
    ```
 
 #### Linux
+
 1. Install via the package manager:
+
    ```bash
    sudo apt update
    sudo apt install tesseract-ocr
    ```
+
 2. Verify installation:
+
    ```bash
    tesseract --version
    ```
@@ -52,23 +62,27 @@ This is a web-based application that allows users to upload an image containing 
 ## Local Development
 
 ### Clone the Repository
+
 ```bash
 git clone https://github.com/jasminaaa20/streamlit-ocr.git
 cd streamlit-ocr
 ```
 
 ### Create a Virtual Environment
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 ### Install Python Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### Run the Application
+
 ```bash
 streamlit run main.py
 ```
@@ -80,11 +94,13 @@ Visit `http://localhost:8501` in your browser to use the app.
 ## Docker Deployment
 
 ### Build the Docker Image
+
 ```bash
 docker build -t streamlit-ocr .
 ```
 
 ### Run the Docker Container
+
 ```bash
 docker run -p 8501:8501 streamlit-ocr
 ```
@@ -95,13 +111,17 @@ Access the app at `http://localhost:8501`.
 
 ## Deploy to Google Cloud Run
 
-### Prerequisites
+### Prerequisites to Deploy
+
 - Install the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install).
 - Authenticate with your Google Cloud account:
+
   ```bash
   gcloud auth login
   ```
+
 - Enable the Cloud Run API:
+
   ```bash
   gcloud services enable run.googleapis.com
   ```
@@ -109,11 +129,13 @@ Access the app at `http://localhost:8501`.
 ### Steps to Deploy
 
 1. **Build and Push the Image to Google Container Registry**
+
    ```bash
    gcloud builds submit --tag gcr.io/<PROJECT-ID>/streamlit-ocr
    ```
 
 2. **Deploy to Cloud Run**
+
    ```bash
    gcloud run deploy streamlit-ocr \
        --image gcr.io/<PROJECT-ID>/streamlit-ocr \
@@ -131,7 +153,7 @@ Access the app at `http://localhost:8501`.
 
 ## Application Structure
 
-```
+```plaintext
 .
 ├── Dockerfile           # Docker configuration file
 ├── requirements.txt     # Python dependencies
@@ -161,4 +183,3 @@ TBD
 [Akmal Ali Jasmin](https://github.com/jasminaaa20)
 
 Feel free to contribute or raise issues in the repository. Enjoy extracting text from images!
-
