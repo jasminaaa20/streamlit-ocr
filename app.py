@@ -5,34 +5,44 @@ import os
 
 port = int(os.environ.get("PORT", 8501))
 
-# Title of the app
-st.title("OCR Image to Text Extractor")
+# Page configuration
+st.set_page_config(
+    page_title="Streamlit OCR", 
+    page_icon=":mag:"
+)
 
-# File uploader for images
-uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+# Sidebar
+with st.sidebar:
+    st.title("ℹ️ About")
+    st.info("This app uses Tesseract OCR to extract text from images. Upload an image, and the text will be extracted for you.")
+    st.write("Powered by [Streamlit](https://streamlit.io) and [Tesseract OCR](https://github.com/tesseract-ocr)")
+
+# Title
+st.title("📄 OCR Text Extractor")
+
+# File uploader
+uploaded_file = st.file_uploader(
+    "📤 Upload your image (PNG, JPG, JPEG)", 
+    type=["png", "jpg", "jpeg"]
+)
+
+# Example Image Button
+if st.button("Use Example Image"):
+    example_image_path = "test\data\example_image.png"  # Add an example image to your project folder
+    uploaded_file = example_image_path
 
 if uploaded_file:
-    # Save the uploaded file in session state to replace previous uploads
-    if 'uploaded_image' not in st.session_state:
-        st.session_state['uploaded_image'] = None
+    # Display the image and extracted text
+    image = Image.open(uploaded_file)
 
-    # Replace the previous uploaded file
-    st.session_state['uploaded_image'] = uploaded_file
-
-    # Load and display the new image
-    image = Image.open(st.session_state['uploaded_image'])
     st.image(image, caption="Uploaded Image", use_container_width=True)
-
-    # Perform OCR using pytesseract
+    
     with st.spinner("Extracting text..."):
         extracted_text = pytesseract.image_to_string(image)
-
-    # Display the extracted text
-    st.subheader("Extracted Text:")
-    st.text_area("Extracted Text:", extracted_text, height=200)
-
-# Add instructions
-st.info("Upload an image containing text, and the app will extract the text for you.")
-
-# Footer
-st.write("Powered by [Streamlit](https://streamlit.io) and [Tesseract OCR](https://github.com/tesseract-ocr)")
+    st.text_area("Extracted Text", extracted_text, height=300)
+    st.download_button(
+        label="Download Extracted Text",
+        data=extracted_text,
+        file_name="extracted_text.txt",
+        mime="text/plain"
+    )
