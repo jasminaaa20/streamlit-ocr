@@ -28,7 +28,7 @@ uploaded_file = st.file_uploader(
 
 # Example Image Button
 if st.button("Use Example Image"):
-    example_image_path = "test\data\example_image.png"  # Add an example image to your project folder
+    example_image_path = "test/data/example_image.png"  # Add an example image to your project folder
     uploaded_file = example_image_path
 
 if uploaded_file:
@@ -46,3 +46,4 @@ if uploaded_file:
         file_name="extracted_text.txt",
         mime="text/plain"
     )
+
