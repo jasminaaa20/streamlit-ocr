@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
         "Dockerized",
+        "libtesseract",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED",
         "streamlit",
         "Tesseract",
         "venv"
