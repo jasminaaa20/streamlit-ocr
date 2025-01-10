@@ -22,9 +22,20 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         project_id: invertible-pipe-446908-p9
 
+    # Debug authentication
+    - name: Debug Google Cloud Authentication
+      run: |
+        echo "${{ secrets.GCP_SA_KEY }}" > $HOME/gcp-key.json
+        gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
+        gcloud auth list
+        gcloud config list
+
     # Build and push Docker image to Google Container Registry
     - name: Build and push Docker image
       run: |
+        echo "${{ secrets.GCP_SA_KEY }}" > $HOME/gcp-key.json
+        gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
+        gcloud auth configure-docker gcr.io
         docker build -t gcr.io/invertible-pipe-446908-p9/streamlit-ocr .
         docker push gcr.io/invertible-pipe-446908-p9/streamlit-ocr
 
