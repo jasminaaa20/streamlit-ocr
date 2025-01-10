@@ -11,11 +11,16 @@ st.title("OCR Image to Text Extractor")
 # File uploader for images
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
-if uploaded_file is not None:
-    # Load the image
-    image = Image.open(uploaded_file)
+if uploaded_file:
+    # Save the uploaded file in session state to replace previous uploads
+    if 'uploaded_image' not in st.session_state:
+        st.session_state['uploaded_image'] = None
 
-    # Display the uploaded image
+    # Replace the previous uploaded file
+    st.session_state['uploaded_image'] = uploaded_file
+
+    # Load and display the new image
+    image = Image.open(st.session_state['uploaded_image'])
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # Perform OCR using pytesseract
