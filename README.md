@@ -182,4 +182,6 @@ Access the app at `http://localhost:8501`.
 
 [Akmal Ali Jasmin](https://github.com/jasminaaa20)
 
+[LinkedIn post](https://www.linkedin.com/posts/akmal-ali-jasmin_github-jasminaaa20streamlit-ocr-activity-7286394636074459136-tNH2)
+
 Feel free to contribute or raise issues in the repository. Enjoy extracting text from images!
